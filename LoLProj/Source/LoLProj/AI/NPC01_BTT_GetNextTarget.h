@@ -10,9 +10,16 @@
  * 
  */
 UCLASS()
-class LOLPROJ_API UNPC01_BTT_GetNextTarget : public UBTTaskNode
-{
+class LOLPROJ_API UNPC01_BTT_GetNextTarget : public UBTTaskNode {
 	GENERATED_BODY()
 	
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+
+protected:
+
+	UPROPERTY(Category = "Blackboard", EditAnywhere)
+		FBlackboardKeySelector IndexKey;
+
+	UPROPERTY(Category = "Blackboard", EditAnywhere)
+		FBlackboardKeySelector TargetKey;
 };
