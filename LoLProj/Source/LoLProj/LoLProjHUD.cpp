@@ -7,16 +7,10 @@
 #include "CanvasItem.h"
 #include "UObject/ConstructorHelpers.h"
 
-ALoLProjHUD::ALoLProjHUD()
-{
-	// Set the crosshair texture
-	static ConstructorHelpers::FObjectFinder<UTexture2D> CrosshairTexObj(TEXT("/Game/UI/Textures/FirstPersonCrosshair"));
-	CrosshairTex = CrosshairTexObj.Object;
-}
+ALoLProjHUD::ALoLProjHUD() {}
 
 
-void ALoLProjHUD::DrawHUD()
-{
+void ALoLProjHUD::DrawHUD() {
 	Super::DrawHUD();
 
 	// Draw very simple crosshair
@@ -28,8 +22,10 @@ void ALoLProjHUD::DrawHUD()
 	const FVector2D CrosshairDrawPosition( (Center.X),
 										   (Center.Y + 20.0f));
 
-	// draw the crosshair
-	FCanvasTileItem TileItem( CrosshairDrawPosition, CrosshairTex->Resource, FLinearColor::White);
-	TileItem.BlendMode = SE_BLEND_Translucent;
-	Canvas->DrawItem( TileItem );
+	if (CrosshairTex) {
+		// draw the crosshair
+		FCanvasTileItem TileItem(CrosshairDrawPosition, CrosshairTex->Resource, FLinearColor::White);
+		TileItem.BlendMode = SE_BLEND_Translucent;
+		Canvas->DrawItem(TileItem);
+	}
 }

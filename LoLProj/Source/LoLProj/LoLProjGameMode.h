@@ -7,8 +7,7 @@
 #include "LoLProjGameMode.generated.h"
 
 UCLASS(minimalapi)
-class ALoLProjGameMode : public AGameModeBase
-{
+class ALoLProjGameMode : public AGameModeBase {
 	GENERATED_BODY()
 
 public:
